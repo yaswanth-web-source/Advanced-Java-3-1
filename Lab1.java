@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class JDmax
+public class Lab1
 {
     public static void main(String[] args) 
 {
