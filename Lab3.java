@@ -47,3 +47,11 @@ public class Lab3 {
         }
     }
 }
+
+
+OUTPUT:
+
+Database connected.
+Connected Database: testdb
+Record inserted successfully.
+Salary = 55000.0
