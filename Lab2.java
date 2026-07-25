@@ -82,3 +82,27 @@ public class Con {
         selectSt.close();
     }
 }
+
+OUTPUT:
+
+Table created successfully.
+
+Initial records inserted.
+
+Initial Records:
+ROLLNO	NAME	ADDRESS
+1	Ravi	Hyderabad
+2	Kiran	Chennai
+3	Sita	Bangalore
+
+Two records inserted.
+1 record updated.
+1 record deleted.
+
+Final Records:
+ROLLNO	NAME	ADDRESS
+1	Ravi	Hyderabad
+2	Kiran	Delhi
+4	Meera	Pune
+5	Ramesh	Mumbai
+
