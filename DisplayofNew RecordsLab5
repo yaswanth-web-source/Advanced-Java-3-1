@@ -1,0 +1,53 @@
+import java.sql.*;
+class Lab5{
+    public static void main(String[] args) throws Exception {
+        String url = "jdbc:mysql://localhost:3306/testdb?";
+        String user = "root";
+        String password = "Yaswanth@123";
+        try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, user, password);
+        Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs = st.executeQuery("SELECT * FROM Student");
+        rs.last();          
+        rs.deleteRow();     
+        System.out.println("Last student record deleted successfully.");
+        rs.moveToInsertRow();                  
+        rs.updateInt("RollNo", 205);           
+        rs.updateString("Name", "Yaswanth");   
+        rs.updateString("Address", "Paris"); 
+        rs.insertRow();                       
+        System.out.println("New student record inserted successfully.");
+        System.out.println("\nStudent Records:");
+            ResultSet rs2 = st.executeQuery("SELECT * FROM Student");
+            while (rs2.next()) {
+                System.out.println(
+                    "RollNo: " + rs2.getInt("RollNo") +
+                    ", Name: " + rs2.getString("Name") +
+                    ", Address: " + rs2.getString("Address")
+                );
+            }
+            rs2.close();
+            rs.close();
+            st.close();
+            con.close();
+        }catch(Exception e){
+        e.printStackTrace();
+        }
+}
+}
+
+
+OUTPUT:
+Last student record deleted successfully.
+New student record inserted successfully.
+
+Student Records:
+RollNo: 1, Name: Ravi, Address: Hyderabad
+RollNo: 2, Name: Kiran, Address: Delhi
+RollNo: 4, Name: Meera, Address: Pune
+RollNo: 5, Name: Ramesh, Address: Mumbai
+RollNo: 101, Name: Vishnu, Address: Hyderabad
+RollNo: 102, Name: Priya, Address: Chennai
+RollNo: 103, Name: Kiran, Address: Bangalore
+RollNo: 205, Name: Yaswanth, Address: Paris
